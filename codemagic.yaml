@@ -1,0 +1,14 @@
+workflows:
+  sky-rush-android:
+    name: SKY RUSH Android APK
+    max_build_duration: 30
+    instance_type: mac_mini_m2
+    scripts:
+      - name: Configure Android SDK
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
+      - name: Build debug APK
+        script: |
+          gradle --no-daemon assembleDebug
+    artifacts:
+      - app/build/outputs/apk/debug/*.apk
