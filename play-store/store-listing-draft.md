@@ -1,6 +1,6 @@
 # SKY RUSH — Google Play listing draft
 
-Status: draft prepared from the current Android build (v7.0). Review and confirm before entering it in Play Console.
+Status: listing copy approved by the owner for the current release direction. Build v7.0 was installed and tested by the owner and reported working well on 16 November 2026. This is not yet a Play Console submission.
 
 ## App details
 - App name: SKY RUSH
@@ -9,9 +9,10 @@ Status: draft prepared from the current Android build (v7.0). Review and confirm
 - Suggested category: Arcade
 - Suggested default listing language: Arabic
 - Additional listing language: English
-- Current build: versionCode 7 / versionName 7.0
-- Monetization status in current build: no ad SDK is integrated yet.
-- Game economy: local, virtual SR points only; no real-money deposits, withdrawals, purchases, or real-world prizes are present in the inspected game code.
+- Current tested build: versionCode 7 / versionName 7.0
+- Monetization direction: free game with virtual points only.
+- Game economy: no real-money deposits, withdrawals, purchases, or real-world prizes. Points are virtual and for entertainment only.
+- Ads: not integrated in the tested build; planned placement remains a fixed bottom banner and interstitial only between rounds after every 5 completed rounds. No ads during flight. Rewarded ads deferred.
 
 ## Arabic listing
 
@@ -55,21 +56,20 @@ Features:
 Important:
 SKY RUSH uses virtual in-game points for entertainment only. There are no real-money deposits, withdrawals, transfers, or real-world prizes. Points cannot be exchanged for money or goods. Rounds include random outcomes.
 
-## Items that must be completed or confirmed before submission
-- Confirm that the game remains virtual-points-only, with no real-money value or prizes.
+## Items to complete before submission
 - Complete the Google Play content-rating questionnaire truthfully, including any simulated-gambling questions applicable to the crash/multiplier/virtual-stake mechanics.
-- Do not target children; choose the intended audience accurately in Play Console.
-- Create and publish a privacy policy after the final SDK/data practices are known. The current build has no ad SDK, but the planned advertising integration will change the privacy/data-safety disclosures.
+- Select the intended audience accurately; do not target children unless the game is genuinely designed for them and all applicable requirements are met.
+- Create and publish a privacy policy after the final SDK/data practices are known. The tested build has no ad SDK; a future advertising integration will change privacy and Data safety disclosures.
 - If AdMob is used, block the Social Casino Games and Gambling & Betting ad categories and review ads. Blocking is a best-effort control, not an absolute guarantee.
 - Integrate the approved ad plan only after the ad network/account and ad unit IDs are available: fixed banner at the bottom; interstitial only between rounds after every 5 completed rounds; no ads during flight; rewarded ads deferred.
-- Add a compliant 512x512 Play Store app icon, feature graphic, and genuine screenshots captured from the final game build.
-- Add a valid support email address; do not publish until the owner supplies it.
+- Add a compliant 512x512 Play Store app icon, feature graphic, and genuine screenshots captured from the tested game build.
+- Add a valid support email address supplied by the owner.
 - Verify the final AAB after all code/SDK changes, then upload it to a testing track.
 - For a new personal developer account created after 13 November 2023, complete the required closed test with at least 12 opted-in testers continuously for 14 days before applying for production access.
 
-## Asset and contact placeholders
+## Asset and contact status
 - Support email: owner to provide.
 - Privacy policy URL: pending final SDK/data disclosures and public hosting.
-- Play Store icon: not yet created.
-- Feature graphic: not yet created.
-- Screenshots: must be captured from the final build.
+- Play Store icon: pending final approval and repository upload.
+- Feature graphic: pending final approval and repository upload.
+- Screenshots: to be captured from the real game; do not substitute generated promotional artwork for gameplay screenshots.
