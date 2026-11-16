@@ -1,4 +1,4 @@
-name: SKY RUSH Android APK
+name: SKY RUSH Google Play Release
 
 permissions:
   contents: write
@@ -10,9 +10,9 @@ on:
 
 jobs:
   build:
-    name: Build Android APK
+    name: Build signed Google Play bundle and installable APK
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,7 +23,7 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Install Android SDK
+      - name: Install Android SDK 36
         uses: android-actions/setup-android@v3
         with:
           packages: platform-tools
@@ -32,20 +32,83 @@ jobs:
         run: yes | sdkmanager --licenses
 
       - name: Install Android SDK components
-        run: sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools"
+        run: sdkmanager "platforms;android-36" "build-tools;36.0.0" "platform-tools"
 
       - name: Install Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.13'
 
-      - name: Build APK
-        run: gradle --no-daemon assembleDebug
-
-      - name: Publish APK as GitHub Release asset
+      - name: Load or create persistent Play upload key
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "sky-rush-v6-${{ github.run_number }}" app/build/outputs/apk/debug/app-debug.apk \
-            --title "SKY RUSH Android v6 - Build ${{ github.run_number }}" \
-            --notes "Automatically built Android APK for SKY RUSH."
+          mkdir -p signing
+          if gh release view sky-rush-upload-key >/dev/null 2>&1; then
+            gh release download sky-rush-upload-key \
+              --pattern "upload-keystore.jks" \
+              --pattern "signing-credentials.txt" \
+              --dir signing
+          else
+            STORE_PASSWORD="$(openssl rand -hex 24)"
+            KEY_PASSWORD="$STORE_PASSWORD"
+            keytool -genkeypair -v \
+              -keystore signing/upload-keystore.jks \
+              -storetype JKS \
+              -storepass "$STORE_PASSWORD" \
+              -keypass "$KEY_PASSWORD" \
+              -alias skyrush-upload \
+              -keyalg RSA -keysize 2048 -validity 10000 \
+              -dname "CN=SKY RUSH, OU=Android, O=SKY RUSH, L=NA, ST=NA, C=TN"
+            {
+              echo "storePassword=$STORE_PASSWORD"
+              echo "keyAlias=skyrush-upload"
+              echo "keyPassword=$KEY_PASSWORD"
+            } > signing/signing-credentials.txt
+            gh release create sky-rush-upload-key \
+              signing/upload-keystore.jks signing/signing-credentials.txt \
+              --title "Private SKY RUSH Play upload key" \
+              --notes "Private signing material for future SKY RUSH Google Play updates. Keep confidential."
+          fi
+
+          STORE_PASSWORD="$(sed -n 's/^storePassword=//p' signing/signing-credentials.txt)"
+          KEY_ALIAS="$(sed -n 's/^keyAlias=//p' signing/signing-credentials.txt)"
+          KEY_PASSWORD="$(sed -n 's/^keyPassword=//p' signing/signing-credentials.txt)"
+          test -s signing/upload-keystore.jks
+          test -n "$STORE_PASSWORD"
+          test -n "$KEY_ALIAS"
+          test -n "$KEY_PASSWORD"
+          echo "::add-mask::$STORE_PASSWORD"
+          echo "::add-mask::$KEY_PASSWORD"
+          echo "KEYSTORE_FILE=$GITHUB_WORKSPACE/signing/upload-keystore.jks" >> "$GITHUB_ENV"
+          echo "KEYSTORE_PASSWORD=$STORE_PASSWORD" >> "$GITHUB_ENV"
+          echo "KEY_ALIAS=$KEY_ALIAS" >> "$GITHUB_ENV"
+          echo "KEY_PASSWORD=$KEY_PASSWORD" >> "$GITHUB_ENV"
+          keytool -exportcert -rfc -keystore signing/upload-keystore.jks \
+            -storepass "$STORE_PASSWORD" -alias "$KEY_ALIAS" \
+            -file signing/upload_certificate.pem
+          keytool -list -v -keystore signing/upload-keystore.jks \
+            -storepass "$STORE_PASSWORD" -alias "$KEY_ALIAS" \
+            | grep -E "SHA256:" > signing/upload_certificate_fingerprint.txt
+
+      - name: Build signed release APK and Android App Bundle
+        run: gradle --no-daemon bundleRelease assembleRelease
+
+      - name: Verify signed release outputs
+        run: |
+          test -s app/build/outputs/bundle/release/app-release.aab
+          test -s app/build/outputs/apk/release/app-release.apk
+          jarsigner -verify app/build/outputs/bundle/release/app-release.aab
+          jarsigner -verify app/build/outputs/apk/release/app-release.apk
+
+      - name: Publish Google Play bundle and installable APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "sky-rush-play-${{ github.run_number }}" \
+            app/build/outputs/bundle/release/app-release.aab \
+            app/build/outputs/apk/release/app-release.apk \
+            signing/upload_certificate.pem \
+            signing/upload_certificate_fingerprint.txt \
+            --title "SKY RUSH Google Play v7 - Build ${{ github.run_number }}" \
+            --notes "Signed Android App Bundle for Google Play and signed APK for direct installation. Target API 36."
