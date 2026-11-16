@@ -1,10 +1,10 @@
 name: Build SKY RUSH Android APK
 
-on:
+"on":
   push:
     branches:
       - android-apk-build
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 permissions:
   contents: read
