@@ -1,6 +1,9 @@
 name: Build SKY RUSH Android APK
 
 on:
+  push:
+    branches:
+      - android-apk-build
   workflow_dispatch:
 
 permissions:
@@ -11,16 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Checkout private build workspace
+      - name: Check out source
         uses: actions/checkout@v4
-
-      - name: Restore Android project archive
-        shell: bash
-        run: |
-          mkdir -p /tmp/sky-rush-input
-          base64 --decode build-input/SKY_RUSH_Android_Project.zip.b64 > /tmp/sky-rush-input/project.zip
-          unzip -q /tmp/sky-rush-input/project.zip -d /tmp/sky-rush-input
-          cp -a /tmp/sky-rush-input/SKY_RUSH_Android/. "$GITHUB_WORKSPACE"/
 
       - name: Set up Java 17
         uses: actions/setup-java@v4
@@ -31,8 +26,8 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Install Android 36 SDK
-        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+      - name: Install Android 35 SDK
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
       - name: Set up Gradle 8.13
         uses: gradle/actions/setup-gradle@v4
