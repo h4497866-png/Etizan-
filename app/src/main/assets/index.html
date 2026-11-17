@@ -173,5 +173,6 @@ el("game").addEventListener("pointerdown",e=>{if(running&&e.target!==planeEl)mov
 function resetGame(){if(running){alert("أنه الجولة الحالية أولاً");return;}if(!confirm("هل تريد إعادة ضبط الرصيد والإحصائيات؟"))return;data={balance:1000,rounds:0,wins:0,losses:0,net:0,history:[]};el("bet").value=100;el("multiplier").textContent="1.00x";el("status").textContent="جاهز للإقلاع؟";el("potentialProfit").textContent="0 SR";setResult("نتيجة الجولة ستظهر هنا بوضوح");updateUI();}
 updateUI();
 </script>
+<footer style="max-width:650px;margin:22px auto 8px;text-align:center;font:12px Arial,sans-serif;color:#829bb8"><a href="privacy.html" style="color:#8fcfff;text-decoration:underline">سياسة الخصوصية / Privacy Policy</a></footer>
 </body>
 </html>
