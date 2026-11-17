@@ -148,7 +148,7 @@ public class MainActivity extends Activity {
     private void loadBanner() {
         if (isFinishing() || bannerAdded) return;
         bannerAd = new AdView(this);
-        bannerAd.setAdUnitId(TEST_BANNER_ID);
+        bannerAd.setAdUnitId(BANNER_AD_UNIT_ID);
         bannerAd.setAdSize(AdSize.BANNER);
         bannerAd.setAdListener(new AdListener() {
             @Override
@@ -177,7 +177,7 @@ public class MainActivity extends Activity {
         if (!adsInitialized || isFinishing()) return;
         InterstitialAd.load(
                 this,
-                TEST_INTERSTITIAL_ID,
+                INTERSTITIAL_AD_UNIT_ID,
                 new AdRequest.Builder().build(),
                 new InterstitialAdLoadCallback() {
                     @Override
