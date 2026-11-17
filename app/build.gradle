@@ -8,10 +8,10 @@ android {
 
     defaultConfig {
         applicationId 'com.skyrush.game'
-        minSdk 23
+        minSdk 24
         targetSdk 36
-        versionCode 7
-        versionName '7.0'
+        versionCode 8
+        versionName '8.0'
     }
 
     signingConfigs {
@@ -29,4 +29,9 @@ android {
             minifyEnabled false
         }
     }
+}
+
+dependencies {
+    implementation 'com.google.android.gms:play-services-ads:25.5.0'
+    implementation 'com.google.android.ump:user-messaging-platform:4.0.0'
 }
