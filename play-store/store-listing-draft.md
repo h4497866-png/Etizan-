@@ -63,7 +63,7 @@ SKY RUSH uses virtual in-game points for entertainment only. There are no real-m
 - If AdMob is used, block the Social Casino Games and Gambling & Betting ad categories and review ads. Blocking is a best-effort control, not an absolute guarantee.
 - Integrate the approved ad plan only after the ad network/account and ad unit IDs are available: fixed banner at the bottom; interstitial only between rounds after every 5 completed rounds; no ads during flight; rewarded ads deferred.
 - Add a compliant 512x512 Play Store app icon, feature graphic, and genuine screenshots captured from the tested game build.
-- Add a valid support email address supplied by the owner.
+- Support email: h4497866@gmail.com.
 - Verify the final AAB after all code/SDK changes, then upload it to a testing track.
 - For a new personal developer account created after 13 November 2023, complete the required closed test with at least 12 opted-in testers continuously for 14 days before applying for production access.
 
