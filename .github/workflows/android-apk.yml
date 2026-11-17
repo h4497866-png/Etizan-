@@ -110,5 +110,5 @@ jobs:
             app/build/outputs/apk/release/app-release.apk \
             signing/upload_certificate.pem \
             signing/upload_certificate_fingerprint.txt \
-            --title "SKY RUSH Google Play v7 - Build ${{ github.run_number }}" \
-            --notes "Signed Android App Bundle for Google Play and signed APK for direct installation. Target API 36."
+            --title "SKY RUSH Google Play v8 - Build ${{ github.run_number }}" \
+            --notes "Signed Android App Bundle for Google Play and signed APK for direct installation. Version 8.0, min API 24, target API 36. AdMob integration currently uses Google test ad IDs."
