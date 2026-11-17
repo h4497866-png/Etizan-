@@ -20,7 +20,7 @@ a{color:#0869ad}footer{margin-top:30px;color:#718096;font-size:12px}
 <h2>1. الحساب والمعلومات الشخصية</h2>
 <p>لا تتطلب اللعبة إنشاء حساب أو تسجيل الدخول، ولا تطلب من المستخدم إدخال اسمه أو عنوان بريده أو رقم هاتفه أو بيانات موقعه.</p>
 <h2>2. بيانات اللعب والتخزين المحلي</h2>
-<p>تُحفظ معلومات اللعب، مثل النقاط الافتراضية وعدد الجولات والإحصائيات وسجل الجولات، محلياً على جهاز المستخدم باستخدام مساحة التخزين المحلية للتطبيق. وبحسب مراجعة ملفات النسخة الحالية، لا يرسل التطبيق هذه المعلومات إلى خوادم المطوّر، ولا يتضمن حالياً أدوات تحليلات أو حزم إعلانية.</p>
+<p>تُحفظ معلومات اللعب، مثل النقاط الافتراضية وعدد الجولات والإحصائيات وسجل الجولات، محلياً على جهاز المستخدم باستخدام مساحة التخزين المحلية للتطبيق. ولا تُرسل هذه المعلومات إلى خوادم المطوّر. يستخدم التطبيق Google Mobile Ads SDK لعرض إعلانات Banner والإعلانات البينية، كما يستخدم Google User Messaging Platform (UMP) لإدارة خيارات الموافقة والخصوصية. وقد تعالج Google وشركاؤها بيانات لازمة لتقديم الإعلانات وقياسها ومنع الاحتيال، مثل عنوان IP ومعلومات الجهاز ومعرّفات الإعلانات وبيانات التفاعل والتشخيص، وفق إعدادات الموافقة والقوانين المعمول بها وسياسات Google.</p>
 <h2>3. صلاحية الإنترنت والنسخ الاحتياطي</h2>
 <p>يتضمن تطبيق Android صلاحية الإنترنت، لكن مراجعة كود اللعبة الحالي لم تُظهر طلبات شبكة أو إرسالاً لبيانات اللعب. كما تسمح إعدادات التطبيق الحالية بنسخ بياناته احتياطياً؛ لذلك قد تخضع البيانات المحلية لآليات النسخ الاحتياطي التي يديرها Android أو الجهاز، وفق إعدادات المستخدم والخدمات المفعّلة لديه.</p>
 <h2>4. حماية المعلومات</h2>
@@ -28,7 +28,7 @@ a{color:#0869ad}footer{margin-top:30px;color:#718096;font-size:12px}
 <h2>5. الاحتفاظ بالبيانات وحذفها</h2>
 <p>تبقى بيانات اللعب المحلية إلى أن يحذف المستخدم بيانات التطبيق من إعدادات Android أو يزيل التطبيق. وقد تبقى نسخة احتياطية وفق إعدادات النسخ الاحتياطي على الجهاز أو الحساب.</p>
 <h2>6. الإعلانات والتحليلات</h2>
-<p>النسخة الحالية التي تمت مراجعة ملفاتها لا تتضمن SDK للإعلانات أو التحليلات. إذا أُضيفت خدمات من هذا النوع مستقبلاً، فسيتم تحديث هذه السياسة وإفصاحات Google Play قبل توزيع النسخة التي تتضمنها.</p>
+<p>تستخدم اللعبة Google Mobile Ads SDK لعرض إعلانات بانر ثابتة أسفل اللعبة وإعلانات بينية بين الجولات بعد كل خمس جولات مكتملة، ولا تعرض إعلانات أثناء الطيران. كما تستخدم Google User Messaging Platform (UMP) لطلب الموافقة وإتاحة خيارات الخصوصية. قد تجمع Google أو تعالج بيانات مثل عنوان IP، ومعرّفات الجهاز أو الإعلانات، ومعلومات التفاعل مع الإعلانات، وبيانات التشخيص والأداء، لأغراض عرض الإعلانات وقياسها ومنع الاحتيال، وفق إعدادات الموافقة والقوانين المعمول بها. لمزيد من المعلومات، راجع سياسة خصوصية Google وإفصاحات Google Play الخاصة بالتطبيق.</p>
 <h2>7. النقاط الافتراضية</h2>
 <p>النقاط داخل اللعبة افتراضية ومخصصة للعب والترفيه فقط. لا تمثل أموالاً حقيقية ولا يمكن إيداعها أو سحبها أو استبدالها بأموال أو جوائز نقدية.</p>
 <h2>8. خصوصية الأطفال</h2>
@@ -42,7 +42,7 @@ a{color:#0869ad}footer{margin-top:30px;color:#718096;font-size:12px}
 <h2>1. Accounts and personal information</h2>
 <p>The game does not require account creation or sign-in and does not ask users to enter their name, email address, phone number, or location data.</p>
 <h2>2. Gameplay data and local storage</h2>
-<p>Gameplay information, such as virtual points, round counts, statistics, and round history, is stored locally on the user's device using the app's local storage. Based on a review of the current project files, the app does not send this gameplay information to the developer's servers and currently contains no analytics or advertising SDKs.</p>
+<p>Gameplay information, such as virtual points, round counts, statistics, and round history, is stored locally on the user's device using the app's local storage. This gameplay information is not sent to the developer's servers. The app uses the Google Mobile Ads SDK to display Banner and interstitial ads, and Google User Messaging Platform (UMP) to manage consent and privacy choices. Google and its partners may process data needed to serve and measure ads and prevent fraud, such as IP address, device and advertising identifiers, ad interaction information, and diagnostic data, subject to consent settings, applicable laws, and Google policies.</p>
 <h2>3. Internet permission and backup</h2>
 <p>The Android app declares the Internet permission, but a review of the current game code found no network requests or transmission of gameplay data. The current app configuration also allows app data backup. Local data may therefore be subject to Android or device backup mechanisms, depending on the user's settings and enabled services.</p>
 <h2>4. Information security</h2>
@@ -50,7 +50,7 @@ a{color:#0869ad}footer{margin-top:30px;color:#718096;font-size:12px}
 <h2>5. Data retention and deletion</h2>
 <p>Local gameplay data remains on the device until the user clears the app's data in Android settings or uninstalls the app. A backup copy may remain subject to the device or account backup settings.</p>
 <h2>6. Advertising and analytics</h2>
-<p>The current version whose project files were reviewed does not include advertising or analytics SDKs. If such services are added in the future, this policy and the Google Play disclosures will be updated before distributing the version that includes them.</p>
+<p>The game uses the Google Mobile Ads SDK to display a fixed Banner at the bottom of the game and interstitial ads between rounds after every five completed rounds. Ads are not displayed during flight. The app also uses Google User Messaging Platform (UMP) to request consent and provide privacy choices. Google or its partners may collect or process data such as IP address, device or advertising identifiers, ad interaction information, and diagnostic or performance data to serve and measure ads and prevent fraud, subject to consent settings and applicable laws. Please also review Google's privacy policy and the app's Google Play data disclosures.</p>
 <h2>7. Virtual points</h2>
 <p>In-game points are virtual and intended for gameplay and entertainment only. They are not real money and cannot be deposited, withdrawn, or exchanged for money or cash prizes.</p>
 <h2>8. Children's privacy</h2>

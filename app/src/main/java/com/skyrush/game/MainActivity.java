@@ -29,9 +29,9 @@ import com.google.android.ump.ConsentRequestParameters;
 import com.google.android.ump.UserMessagingPlatform;
 
 public class MainActivity extends Activity {
-    // Google-provided test IDs. Replace with SKY RUSH's own IDs before public release.
-    private static final String TEST_BANNER_ID = "ca-app-pub-3940256099942544/6300978111";
-    private static final String TEST_INTERSTITIAL_ID = "ca-app-pub-3940256099942544/1033173712";
+    // SKY RUSH production ad unit IDs created in the owner's AdMob account.
+    private static final String BANNER_AD_UNIT_ID = "ca-app-pub-2369000388451137/8530127989";
+    private static final String INTERSTITIAL_AD_UNIT_ID = "ca-app-pub-2369000388451137/7025474623";
 
     private WebView webView;
     private LinearLayout rootLayout;
