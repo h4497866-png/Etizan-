@@ -186,6 +186,13 @@ public class MainActivity extends Activity {
         public void onFifthRoundCompleted() {
             showInterstitialBetweenRounds();
         }
+
+        @JavascriptInterface
+        public void showPrivacyOptionsForm() {
+            runOnUiThread(() -> UserMessagingPlatform.showPrivacyOptionsForm(
+                    MainActivity.this,
+                    formError -> { }));
+        }
     }
 
     @Override
