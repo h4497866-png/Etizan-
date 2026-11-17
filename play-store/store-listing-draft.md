@@ -12,7 +12,7 @@ Status: listing copy approved by the owner for the current release direction. Bu
 - Latest tested release: versionCode 7 / versionName 7.0 (owner confirmed successful testing on 17 November 2026)
 - Monetization direction: free game with virtual points only.
 - Game economy: no real-money deposits, withdrawals, purchases, or real-world prizes. Points are virtual and for entertainment only.
-- Ads: not integrated in the tested build; planned placement remains a fixed bottom banner and interstitial only between rounds after every 5 completed rounds. No ads during flight. Rewarded ads deferred.
+- Ads: AdMob SDK integration is being added in v8 using Google's test App ID and test ad units only. Planned placement: fixed bottom banner and interstitial only between rounds after every 5 completed rounds. No ads during flight. Rewarded ads deferred. Replace all test IDs with the app's own AdMob IDs before public release.
 
 ## Arabic listing
 
