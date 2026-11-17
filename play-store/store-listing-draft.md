@@ -1,6 +1,6 @@
 # SKY RUSH — Google Play listing draft
 
-Status: listing copy approved by the owner for the current release direction. Build v7.0 (versionCode 7) was installed and tested by the owner, who confirmed on 17 November 2026 that it works excellently. This is not yet a Play Console submission.
+Status: Arabic and English listing copy retained as the approved draft. The owner tested the v8 Android build and confirmed that the bottom banner appears. The interstitial trigger is reached after five completed rounds, but the user reported seeing a “قيد الإنشاء” message instead of an actual interstitial ad; this requires separate verification before public release. This is not yet a Play Console submission.
 
 ## App details
 - App name: SKY RUSH
@@ -9,10 +9,10 @@ Status: listing copy approved by the owner for the current release direction. Bu
 - Suggested category: Arcade
 - Suggested default listing language: Arabic
 - Additional listing language: English
-- Latest tested release: versionCode 7 / versionName 7.0 (owner confirmed successful testing on 17 November 2026)
+- Current release candidate: versionCode 8 / versionName 8.0; signed APK and AAB build completed successfully.
 - Monetization direction: free game with virtual points only.
 - Game economy: no real-money deposits, withdrawals, purchases, or real-world prizes. Points are virtual and for entertainment only.
-- Ads: AdMob SDK integration is being added in v8 using Google's test App ID and test ad units only. Planned placement: fixed bottom banner and interstitial only between rounds after every 5 completed rounds. No ads during flight. Rewarded ads deferred. Replace all test IDs with the app's own AdMob IDs before public release.
+- Ads: AdMob production App ID and the owner's production Banner and Interstitial unit IDs are configured in v8. The owner confirmed the bottom Banner displays. Interstitial is triggered after every 5 completed rounds, but the actual ad has not yet been confirmed to display; diagnose this before public release. No ads during flight. Rewarded ads deferred.
 
 ## Arabic listing
 
@@ -68,8 +68,8 @@ SKY RUSH uses virtual in-game points for entertainment only. There are no real-m
 - For a new personal developer account created after 13 November 2023, complete the required closed test with at least 12 opted-in testers continuously for 14 days before applying for production access.
 
 ## Asset and contact status
-- Support email: owner to provide.
-- Privacy policy URL: pending final SDK/data disclosures and public hosting.
-- Play Store icon: pending final approval and repository upload.
-- Feature graphic: pending final approval and repository upload.
+- Support email: h4497866@gmail.com.
+- Privacy policy URL: existing in-game URL is https://skyrushprivacy.wordpress.com/skyrush/; verify public access and revise/publish final policy for production AdMob SDK disclosures before submission.
+- Play Store icon: concept artwork reportedly prepared for review; not yet confirmed approved or present in repository.
+- Feature graphic: concept artwork reportedly prepared for review; not yet confirmed approved or present in repository.
 - Screenshots: to be captured from the real game; do not substitute generated promotional artwork for gameplay screenshots.
