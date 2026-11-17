@@ -1,6 +1,6 @@
 # SKY RUSH — Google Play listing draft
 
-Status: listing copy approved by the owner for the current release direction. Build v7.0 (versionCode 7) has been built and signed; owner installation testing of v7.0 is still to be confirmed. The previously tested build was v6. This is not yet a Play Console submission.
+Status: listing copy approved by the owner for the current release direction. Build v7.0 (versionCode 7) was installed and tested by the owner, who confirmed on 17 November 2026 that it works excellently. This is not yet a Play Console submission.
 
 ## App details
 - App name: SKY RUSH
@@ -9,7 +9,7 @@ Status: listing copy approved by the owner for the current release direction. Bu
 - Suggested category: Arcade
 - Suggested default listing language: Arabic
 - Additional listing language: English
-- Latest built release: versionCode 7 / versionName 7.0 (owner testing still to be confirmed)
+- Latest tested release: versionCode 7 / versionName 7.0 (owner confirmed successful testing on 17 November 2026)
 - Monetization direction: free game with virtual points only.
 - Game economy: no real-money deposits, withdrawals, purchases, or real-world prizes. Points are virtual and for entertainment only.
 - Ads: not integrated in the tested build; planned placement remains a fixed bottom banner and interstitial only between rounds after every 5 completed rounds. No ads during flight. Rewarded ads deferred.
