@@ -7,6 +7,8 @@
 **Support contact:** h4497866@gmail.com  
 **Last reviewed:** 17 November 2026
 
+**Existing in-game policy link:** `https://skyrushprivacy.wordpress.com/skyrush/` is already present in the current game's HTML footer. Its live accessibility and content have not yet been verified, so it must be checked before submission.
+
 ## 1. Current app operation
 
 The current SKY RUSH Android build is an offline arcade game. It does not require an account, and game progress and virtual-point statistics are stored locally on the user's device using local browser storage inside the app. The current reviewed build does not include an advertising SDK, analytics SDK, or developer-operated account/server service.
@@ -45,5 +47,6 @@ For privacy questions, contact: **h4497866@gmail.com**
 - [ ] Review the SDK's official privacy/data disclosure documentation.
 - [ ] Update the policy with every data category collected/shared, purposes, retention, and opt-out/consent controls as applicable.
 - [ ] Reconcile the policy with the actual Android manifest, SDK configuration, and Google Play Data safety form.
-- [ ] Publish this policy at a stable public HTTPS URL that is accessible without signing in.
+- [ ] Verify whether the existing in-game URL `https://skyrushprivacy.wordpress.com/skyrush/` is controlled by the developer, publicly accessible without signing in, and contains the final accurate policy; otherwise replace it with the final published policy URL in the game.
+- [ ] Publish the final policy at a stable public HTTPS URL that is accessible without signing in.
 - [ ] Open the public URL on a device/browser where the owner is not signed in and verify it loads.
