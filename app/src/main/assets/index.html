@@ -86,7 +86,7 @@ footer{text-align:center;color:#58728e;font-size:11px;padding:14px}
 </div>
 <div class="roundresult" id="roundResult" aria-live="polite">نتيجة الجولة ستظهر هنا بوضوح</div>
 <div class="card">
- <div style="margin-bottom:10px;color:#a9c5e4">مبلغ الرهان</div><input id="bet" type="number" min="1" step="0.01" value="100">
+ <div style="margin-bottom:10px;color:#a9c5e4">عدد النقاط المستخدمة</div><input id="bet" type="number" min="1" step="0.01" value="100">
  <div class="quick"><button onclick="changeBet(0.5)">½ نصف</button><button onclick="changeBet(2)">×2 ضعف</button><button onclick="changeBet('max')">MAX</button></div>
  <button class="mainbtn" id="playBtn" onclick="play()">ابدأ الجولة</button>
  <div style="text-align:center;color:#819bb8;font-size:11px;margin-top:10px">نقاط افتراضية للتجربة والترفيه فقط</div>
@@ -128,7 +128,7 @@ function audio(type){if(!soundOn)return;try{audioCtx=audioCtx||new (window.Audio
 function toggleSound(){soundOn=!soundOn;el("soundBtn").textContent=soundOn?"🔊 الصوت: تشغيل":"🔇 الصوت: مكتوم";if(soundOn)audio("takeoff");}
 function setResult(text,kind="neutral"){const box=el("roundResult");box.textContent=text;box.style.color=kind==="win"?"#54e6ae":kind==="loss"?"#ff8292":"#a9c5e4";box.style.borderColor=kind==="win"?"#267b64":kind==="loss"?"#85404e":"#294666";}
 function play(){
- if(running)return;const amount=Number(el("bet").value);if(!Number.isFinite(amount)||amount<=0){alert("أدخل مبلغاً صحيحاً للرهان");return;}if(amount>data.balance){alert("رصيدك لا يكفي لهذا الرهان");return;}if(data.balance<=0){alert("انتهى رصيدك الافتراضي. أعد ضبط اللعبة للبدء من جديد.");return;}
+ if(running)return;const amount=Number(el("bet").value);if(!Number.isFinite(amount)||amount<=0){alert("أدخل عدداً صحيحاً من النقاط");return;}if(amount>data.balance){alert("رصيدك من النقاط لا يكفي لهذه الجولة");return;}if(data.balance<=0){alert("انتهى رصيدك الافتراضي. أعد ضبط اللعبة للبدء من جديد.");return;}
  betAmount=Math.round(amount*100)/100;data.balance=Math.round((data.balance-betAmount)*100)/100;running=true;startedAt=Date.now();crashAt=1.15+Math.random()*4.85;roundLevel=levelIndex(data.rounds);hitsThisRound=0;lastMultiplier=1;manualControl=false;dragging=false;
  const game=el("game");game.classList.remove("crashed");game.classList.add("flying");el("status").textContent="الطائرة في الجو... تفادَ القنابل!";el("potentialProfit").textContent="0 SR";setResult("الجولة جارية — اسحب الأرباح في الوقت المناسب");
  const button=el("playBtn");button.textContent="اسحب الأرباح الآن";button.onclick=cashOut;button.disabled=false;
