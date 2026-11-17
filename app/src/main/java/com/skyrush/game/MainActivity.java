@@ -12,10 +12,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
@@ -34,6 +36,7 @@ public class MainActivity extends Activity {
     private WebView webView;
     private LinearLayout rootLayout;
     private AdView bannerAd;
+    private TextView bannerStatus;
     private InterstitialAd interstitialAd;
     private ConsentInformation consentInformation;
     private boolean adsInitialized = false;
@@ -53,6 +56,18 @@ public class MainActivity extends Activity {
         webView.setLayoutParams(new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f));
         rootLayout.addView(webView);
+
+        // Temporary on-screen diagnostics for the missing Banner report.
+        bannerStatus = new TextView(this);
+        bannerStatus.setText("حالة Banner: بانتظار تهيئة الإعلانات");
+        bannerStatus.setTextSize(10);
+        bannerStatus.setTextColor(0xFF9FC7E8);
+        bannerStatus.setGravity(android.view.Gravity.CENTER);
+        bannerStatus.setPadding(6, 4, 6, 4);
+        bannerStatus.setLayoutParams(new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
+        rootLayout.addView(bannerStatus);
 
         setContentView(rootLayout);
 
@@ -105,12 +120,18 @@ public class MainActivity extends Activity {
                         formError -> {
                             if (consentInformation.canRequestAds()) {
                                 initializeAdsOnce();
+                            } else {
+                                runOnUiThread(() -> bannerStatus.setText(
+                                        "حالة Banner: لم تسمح إعدادات الموافقة بطلب الإعلانات"));
                             }
                         }),
                 requestError -> {
                     // UMP may still permit ads using a valid consent choice from an earlier session.
                     if (consentInformation.canRequestAds()) {
                         initializeAdsOnce();
+                    } else {
+                        runOnUiThread(() -> bannerStatus.setText(
+                                "حالة Banner: تعذّر تحديث الموافقة ولم يُسمح بطلب الإعلانات"));
                     }
                 });
     }
@@ -129,6 +150,21 @@ public class MainActivity extends Activity {
         bannerAd = new AdView(this);
         bannerAd.setAdUnitId(TEST_BANNER_ID);
         bannerAd.setAdSize(AdSize.BANNER);
+        bannerAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                runOnUiThread(() -> bannerStatus.setText(
+                        "حالة Banner: تم التحميل بنجاح"));
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError error) {
+                runOnUiThread(() -> bannerStatus.setText(
+                        "فشل Banner — الرمز: " + error.getCode()
+                                + " — " + error.getMessage()));
+            }
+        });
+        bannerStatus.setText("حالة Banner: أُرسل طلب الإعلان، بانتظار النتيجة...");
         bannerAd.setLayoutParams(new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
