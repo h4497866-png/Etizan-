@@ -11,7 +11,7 @@
 
 ## 1. Current app operation
 
-The current SKY RUSH Android build is an offline arcade game. It does not require an account, and game progress and virtual-point statistics are stored locally on the user's device using local browser storage inside the app. The current reviewed build does not include an advertising SDK, analytics SDK, or developer-operated account/server service.
+The current SKY RUSH Android build is an offline arcade game. It does not require an account, and game progress and virtual-point statistics are stored locally on the user's device using local browser storage inside the app. The AdMob SDK and Google UMP consent SDK are being integrated in version 8. The current integration uses Google's official test App ID and test ad-unit IDs only; it is not yet connected to the owner's AdMob account or live ad units. The app does not include a developer-operated account/server service.
 
 ## 2. Information stored on the device
 
@@ -21,7 +21,7 @@ Uninstalling the app or clearing its app data may remove locally stored progress
 
 ## 3. Advertising and third-party services
 
-Advertising is planned for a future version, but no advertising SDK is included in the currently reviewed build. Before an advertising SDK is added, this policy and the Google Play Data safety declaration must be updated to identify the provider, the categories of data it may collect or share, the purposes of processing, and any available user controls. Do not treat this draft as the final disclosure for an ad-supported release.
+AdMob advertising is being integrated using Google's test ad units. The intended placements are a fixed bottom banner and an interstitial between rounds after every five completed rounds; no ads appear during flight, and rewarded ads are deferred. The UMP SDK is included to request and manage consent and provide a privacy-options entry point. Before public release, replace test IDs with the owner's AdMob IDs, configure the required privacy messages in AdMob, review Google's current SDK data disclosures, and update this policy and the Google Play Data safety declaration to accurately identify all data categories collected or shared, processing purposes, retention, and user controls. Do not treat this draft as the final disclosure for an ad-supported release.
 
 ## 4. Children's privacy
 
@@ -43,8 +43,8 @@ For privacy questions, contact: **h4497866@gmail.com**
 
 ## Publication blockers — internal checklist
 
-- [ ] Confirm the final advertising provider and SDK version, or confirm that ads will not be included in the first public release.
-- [ ] Review the SDK's official privacy/data disclosure documentation.
+- [ ] Confirm AdMob account, registered app, production App ID, and production banner/interstitial ad-unit IDs; replace all Google test IDs before public release.
+- [ ] Review the SDK's official privacy/data disclosure documentation and update Data safety to match the exact SDK version and app configuration.
 - [ ] Update the policy with every data category collected/shared, purposes, retention, and opt-out/consent controls as applicable.
 - [ ] Reconcile the policy with the actual Android manifest, SDK configuration, and Google Play Data safety form.
 - [ ] Verify whether the existing in-game URL `https://skyrushprivacy.wordpress.com/skyrush/` is controlled by the developer, publicly accessible without signing in, and contains the final accurate policy; otherwise replace it with the final published policy URL in the game.
