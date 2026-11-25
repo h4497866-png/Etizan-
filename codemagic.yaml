@@ -1,19 +1,19 @@
 workflows:
-  sky-rush-android:
-    name: SKY RUSH V10.3 Android APK
+  android-build:
+    name: SKY RUSH V10.3 APK
     max_build_duration: 60
     environment:
       java: 17
     scripts:
-      - name: Install Android SDK and Gradle
+      - name: Install Android SDK
         script: |
-          set -eu
-          sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
-          curl --fail --location --retry 3 https://services.gradle.org/distributions/gradle-8.11.1-bin.zip -o /tmp/sky-gradle.zip
-          unzip -q /tmp/sky-gradle.zip -d /tmp/sky-gradle
-      - name: Build installable APK
+          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+      - name: Install Gradle
         script: |
-          set -eu
-          /tmp/sky-gradle/gradle-8.11.1/bin/gradle --no-daemon :app:assembleDebug --stacktrace
+          curl -fL https://services.gradle.org/distributions/gradle-8.11.1-bin.zip -o /tmp/gradle.zip
+          unzip -q /tmp/gradle.zip -d /tmp
+      - name: Build APK
+        script: |
+          /tmp/gradle-8.11.1/bin/gradle :app:assembleDebug --no-daemon
     artifacts:
-      - app/build/outputs/apk/debug/*.apk
+      - app/build/outputs/apk/**/*.apk
