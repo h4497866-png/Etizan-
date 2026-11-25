@@ -1,17 +1,20 @@
+
 workflows:
   android-build:
     name: SKY RUSH V10.3 APK
     max_build_duration: 60
+    instance_type: mac_mini_m2
     environment:
       java: 17
     scripts:
-      - name: Install Android SDK
+      - name: Configure Android SDK
         script: |
-          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
+          ls "$ANDROID_SDK_ROOT/platforms"
       - name: Install Gradle
         script: |
-          curl -fL https://services.gradle.org/distributions/gradle-8.11.1-bin.zip -o /tmp/gradle.zip
-          unzip -q /tmp/gradle.zip -d /tmp
+          curl -fL --retry 3 https://services.gradle.org/distributions/gradle-8.11.1-bin.zip -o /tmp/gradle.zip
+          unzip -oq /tmp/gradle.zip -d /tmp
       - name: Build APK
         script: |
           /tmp/gradle-8.11.1/bin/gradle :app:assembleDebug --no-daemon
