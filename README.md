@@ -1,5 +1,8 @@
-# SKY RUSH — Android build workspace
+# SKY RUSH V10.3 — Android source package
+Build with JDK 17, Gradle 8.11.1, Android SDK 35 and internet access to Google Maven. Run `gradle :app:assembleDebug` for installable test APK; `gradle :app:bundleRelease` for unsigned release bundle. Configure release signing securely on the build service. No signing key is included.
 
-Private workspace for preparing the Android APK from the approved SKY RUSH v6 game.
+Default AdMob IDs are official Google test IDs. For production supply Gradle properties ADMOB_APP_ID, ADMOB_BANNER_ID, ADMOB_INTERSTITIAL_ID from your own AdMob account. Configure privacy messaging in AdMob, privacy policy and Play disclosures before publishing. No live ads or earnings until production configuration. Banner is native adaptive; interstitial is attempted only on every fifth completed flight, never mid-flight. If unavailable it is skipped. Offline gameplay remains available. UMP consent precedes ad requests.
 
-The original v5 and approved v6 source files remain unchanged. Android packaging work is isolated on the `android-apk-build` branch.
+Original approved HTML included unchanged; Android asset modifies only advertising hooks, offline gate and placeholder layout. Native build and device tests not performed. Check SDK/dependency availability and audio lifecycle, consent, banner sizing, round 5/10, offline, and release signing before publishing. Package ID com.aziz.skyrush is proposed, confirm before publishing. Gradle wrapper not included; use installed Gradle on build service.
+
+Codemagic: commit the extracted project files at repository root, including codemagic.yaml. Select the SKY RUSH V10.3 Android APK workflow. It installs Gradle 8.11.1 and SDK 35 and builds a debug-signed APK with test ads. This workflow is not a production signing configuration. Static checks passed; native compilation remains unverified.
